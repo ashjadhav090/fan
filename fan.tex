@@ -1,0 +1,951 @@
+\documentclass[12pt]{report}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2cm]{geometry}
+\usepackage{graphics}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, citecolor=black,linkcolor=blue,urlcolor=blue}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+\usepackage{unicode-math}
+\defaultfontfeatures{Scale=MatchLowercase}
+\defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{ragged2e} % for \justify command
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+	\usepackage[]{microtype}
+	\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+	\IfFileExists{parskip.sty}{%
+		\usepackage{parskip}
+	}{% else
+		\setlength{\parindent}{0pt}
+		\setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+	\KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+\usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+	hidelinks,
+	pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+
+
+\begin{document}
+	\large
+	\centering
+	%Title Page
+		\pagenumbering{gobble} % Suppress page numbering for initial pages
+	\begin{quote}
+		\large
+		\centering
+		A\\MINI PROJECT-II REPORT\\ON
+		
+		\begin{quote}
+			\centering
+			
+			\textbf{``Automated IoT Fan Control''}
+		\end{quote}
+		
+		Submitted in Partial Fulfillment of Requirement for the Award of
+		Degree of
+	\end{quote}
+	
+	\begin{quote}
+		\centering
+		\large
+		\textbf{BACHELOR OF TECHNOLOGY}
+	\end{quote}
+	
+	\begin{quote}
+		\large
+		\centering
+		\textbf{COMPUTER SCIENCE AND ENGINEERING}\\
+	\end{quote}
+	of\\
+	Dr. Babasaheb Ambedkar Technological University, Lonere
+	Submitted By
+	\vspace{0.5cm}
+	\begin{quote}
+		\normalsize
+		\centering
+		\begin{table}[ht]
+			\centering
+			\begin{tabular}{ c  c }
+				
+				\bfseries
+				Name & \bfseries Examination Number \\[1ex]
+				\hline\\[1ex]
+				
+				\hspace {-7.4ex}Mr. Vikas Sadashiv Mali & 2167971242038\\[1ex]
+				\hspace {-7ex}Mr. Jayant Arvind Wagh & 2167971242044\\[1ex]
+				\hspace {-7.3ex}Mr. Yash Rajaram Mane & 2167971242030\\[1ex]
+				\hspace {-3.7ex}Mr. Sanket Rajendra Jagtap & 2167971242060\\[1ex]
+				\hspace {-2ex}Mr. Prathmesh Pradip Shinde & 2167971242055\\[1ex]
+				
+				
+			\end{tabular}
+		\end{table}
+	\end{quote}
+	
+	\vspace{0.5cm}
+	\begin{quote}
+		\centering
+		\large
+		\textbf{UNDER THE GUIDANCE OF}
+	\end{quote}
+	\textbf{Prof. P. M. Pondkule}
+	\vspace{0.5cm}
+	\begin{quote}
+		\centering
+		\includegraphics[width=1.16667in,height=2.55833in]{media/diet.jpeg}\\
+		\vspace{0.5cm}
+		\bfseries
+		\textbf{Raosaheb Wangde Master Charitable Trust's}\\
+		\textcolor{red}{Dnyanshree Institute of Engineering and Technology}\\
+		Sajjangad Road, Tal. Dist. Satara, Maharashtra State, 415 013.\\ 2023-2024
+	\end{quote}
+	\vspace{0.5cm}
+	
+	\newpage
+	
+	
+	
+	% certificate page
+	
+	\begin{quote}
+		\centering
+		\LARGE
+		\textbf{Certificate}
+	\end{quote}
+	
+	\begin{quote}
+		\normalsize
+		\centering
+		This is to certify that the mini project-II report entitled, \textbf{``Automated IoT Fan Control''}
+		
+		Submitted by\\[1ex]
+	\end{quote}
+	\vspace{0.5cm}
+	\begin{quote}
+		\centering
+		\begin{table}[ht]
+			\centering
+			\begin{center}
+				\begin{tabular}{l l}
+					
+					\!
+					\bfseries \hspace{1.5mm} Name & \bfseries Examination Number \\
+					
+					Mr. Vikas Sadashiv Mali  & 2167971242038 \\
+					Mr. Jayant Arvind Wagh & 2167971242044 \\
+					Mr. Yash Rajaram Mane & 2167971242030 \\
+					Mr. Sanket Rajendra Jagtap & 2167971242060\\
+					Mr. Prathmesh Pradip Shinde & 2167971242055 \\
+					
+				\end{tabular}
+			\end{center}
+		\end{table}
+	\end{quote}
+	
+	\vspace{0.7cm}
+	\begin{quote}
+		\normalsize
+		It is a bonafide work carried out by these students under guidance of
+		Prof. P. M. Pondkule. It has been accepted and approved for the partial
+		fulfillment of the requirement of Dr. Babasaheb Ambedkar Technical
+		University, Lonere, for the award of the degree of Bachelor of
+		Technology (Computer Science and Engineering). This Mini Project-II work and project
+		report has not been earlier submitted to any other Institute or University for the
+		award of any degree or diploma.
+	\end{quote}
+	
+	\begin{quote}
+		\normalsize
+		\centering
+		\vspace{3cm}
+		\begin{table}[ht]
+			\centering
+			\begin{tabular}{c   c   c}
+				\bfseries
+				Prof. P. M. Pondkule & \bfseries Dr. S. P. Kosbatwar & \bfseries Dr. A. D. Jadhav \\[2ex]
+				(Guide) & (Head of dept.) & (Principal)\\[2ex]
+			\end{tabular}
+		\end{table}
+	\end{quote}
+	\vspace{2cm}
+	\begin{quote}
+		Prof.(External Examiner):\\Place: Satara\\Date:
+	\end{quote}
+	\newpage
+	
+	
+	\begin{quote}
+		\centering
+		\LARGE
+		\textbf{ABSTRACT}
+	\end{quote}
+	
+	
+	\begin{quote}
+		\hspace{1cm}Home automation is a rapidly growing field that aims to enhance the convenience, comfort, and efficiency of residential environments. Raspberry Pi, a versatile and affordable single-board computer, provides an excellent platform for implementing home automation systems. This abstract provides an overview of using Raspberry Pi for.  This project aims to design and implement an intelligent fan control system using the Raspberry Pi Pico W. The system will automatically control the operation of a fan based on two key parameters: ambient temperature and motion detection. The core of the system is the Raspberry Pi Pico W. The temperature is monitored using an onboard temperature sensor, and the motion is detected using a passive infrared (PIR) sensor. When the temperature exceeds a predefined threshold or when motion is detected, the system will automatically turn on the fan. Conversely, if the temperature falls below the threshold and no motion is detected for a certain period, the fan will be turned off, thereby saving energy.
+		
+		\textbf{Keyword:} Automation, Smart Home, IoT Fan.
+	\end{quote}
+	\clearpage
+	
+	\tableofcontents % Generate the table of contents
+	
+	\thispagestyle{empty} % Suppress header and footer on content page
+	
+	\newpage % Start content on a new page
+	
+	\vspace*{10.5cm} % Introduce negative space to reduce top margin (adjust as needed)
+	
+	% \section{Your Content Section 1}  % Start your content with sections
+	
+	% Your content here ...
+	
+	% \section{Your Content Section 2}  % Add more sections
+	
+	% Your content here ...
+	
+	
+%	\tableofcontents
+%	\newpage
+	
+\pagenumbering{arabic}
+\setcounter{page}{1}
+%	\begin{quote}
+		\section{1. Introduction}
+		The electric fan is one of the most common electrical devices found in  almost  every home.  They  are particularly  used in  homes  to control room temperature. They  have  become  an integral part of our home environment to give us comfort by cooling our bodies in hot and humid climates. The ceiling fan has a motor that converts electrical energy into mechanical energy. As hot air rises, the  blades of the  fan slice this air and  push it down. This continuous process causes air to circulate in the entire room. The continuous circulation mixes hot and cold air in the room and in effect reduces the temperature to an average value. Demand for the accurate temperature control has conquered many of industrial domains. Automatic temperature control is important to maintain a comfortable environment. Fans come in different forms such as ceiling fan, table fan, wall-mounted and pedestal fans with special applications.
+		
+		Current technologies require something that can work or function automatically and efficiently. Thus, many types of fan were produced since many problems had occurred. Automatic mini fan willautomatically function when the sensor detects human surroundings. Human detection system is applied in this project to make it different from the previous project. This mini fan uses two power supplies that consist of two energy sources which are Alternating Current and Direct Current power supplies. Other than that, the Passive Infrared Sensor (PIR) sensor is used to detect the human presence and is automatically off when there is no presence of the human. The automatic person detection system using PIR sensor is the reliable circuit that tracks a person accurately and controls the speed of the motor by using Arduino. The hardware and software have been integrated and installed correctly and completely. The Automatic Mini Fan with Human Detector by Using PIR Sensor works when the fan is switched on. Then the system of the fan automatically functions based on the coding of the Arduino and when the PIR sensor detects the presence of human crossing it. The speed motor of the fan is controlled by the temperature sensor.
+		
+		The core functionality revolves around improving comfort and potentially saving energy. By utilizing a Passive InfraRed (PIR) sensor, the system can detect human presence in a room and trigger the fan to turn on, eliminating the need to manually operate it when entering and leaving. Additionally, a temperature sensor, like the BME280, allows for incorporating temperature control logic. The Raspberry Pi Pico W serves as the brain of the operation, reading sensor data, implementing control algorithms written in MicroPython, and ultimately driving the fan's operation through a transistor or relay module. This project opens doors for further exploration. You could consider adding a user interface with buttons or dials for adjusting fan settings or even incorporating a small display to show the current temperature. By bringing these elements together, you'll not only build a smart and efficient automatic fan control system but also gain valuable experience in working with microcontrollers, sensors, and programming languages like MicroPython.
+		
+		The growing emphasis on sustainability and automation in our daily lives presents a compelling opportunity for projects like your automatic fan control system based on motion detection and temperature sensing, utilizing the powerful capabilities of the Raspberry Pi Pico W. This project ventures into the exciting realm of embedded systems, where a compact and versatile computer like the Pico W acts as a bridge between the physical world and the digital realm. Sensors and actuators become its hands and eyes, allowing it to perceive and interact with its surroundings. The core functionality of your project is designed to enhance both comfort and energy efficiency. By employing a Passive InfraRed (PIR) sensor, the system can detect human movement within a designated area. This triggers the fan to automatically turn on, eliminating the need to manually adjust settings upon entering or leaving a room.  Furthermore, a temperature sensor, such as the BME280, empowers the system to incorporate intelligent temperature control logic. Imagine a scenario where the fan activates only when both a person is present and the temperature exceeds a pre-defined threshold. This ensures efficient operation and avoids unnecessary power consumption.
+		
+		The Raspberry Pi Pico W serves as the heart of this intelligent system. It reads data from the sensors, processes it based on the control algorithms you develop using the user-friendly MicroPython programming language.  Finally, it translates these decisions into actions by driving the fan's operation through a transistor or relay module. This project offers a springboard for further exploration and customization. You could consider incorporating a user interface with buttons or dials for fine-tuning fan settings based on individual preferences.  Alternatively, a small display could be added to provide real-time feedback on the current temperature, allowing users to monitor and adjust the system accordingly. By combining these elements, you'll not only construct a smart and energy-saving automatic fan control system, but also gain invaluable hands-on experience in working with microcontrollers, various sensors, and programming languages like MicroPython. This project serves as a stepping stone towards building more complex and integrated automation solutions in the future.
+		
+%	\end{quote}
+	
+	
+	\clearpage
+	
+	%literature review
+	\begin{quote}
+		\section{2. Literature Review}
+		Human Motion Recognition: A study titled “Automatic Lights And Fans Control System Using Human Motion Recognition With Temperature Sensor” discusses a system that uses Raspberry Pi to control lights and fans by detecting human motion with a PIR sensor and room temperature with a DS18B20 sensor. The system aims to reduce power consumption and can be managed remotely via a smartphone.
+		
+		Temperature-Based Speed Control: Another research, “Modelling a Temperature Based Speed Control of a Fan,” presents an automatic fan speed control system that adjusts based on room temperature variations. It utilizes an Arduino microcontroller and a DHT11 temperature sensor, offering a reliable and efficient closed-loop feedback control system.
+		
+		Raspberry Pi-Based Controller: The paper “Design Of An Automatic Room Temperature-controlled Fan Using Raspberry Pi” introduces a Raspberry Pi-based automatic fan speed controller with an integrated temperature display using an LCD. This aligns with smart home technologies and offers an innovative solution for temperature-based fan control.
+		
+		Smart Fan Prototype: Research titled “Temperature and Ultrasonic Sensor” details a smart fan prototype built using an ESP8266 microcontroller. It employs a DHT22 sensor for temperature-based speed control and an HC-SR04 sensor to detect users for automatic on/off functionality.
+		
+		IoT-Based Home Automation: A paper titled “Automatic Lights And Fans Control System Using Human Motion Recognition With Temperature Sensor” discusses an IoT-based home automation system. It uses Raspberry Pi for controlling lights and fans by sensing room temperature and human motion. The system aims to reduce power consumption and can be managed remotely via a smartphone.
+		
+		ESP8266-Based Smart Fan: A study titled “Temperature and Ultrasonic Sensor” details a smart fan prototype using an ESP8266 microcontroller. It employs a DHT22 sensor for temperature-based speed control and an HC-SR04 sensor to detect users for automatic on/off functionality.
+		\clearpage
+		
+		\subsection{2.1 Automatic Fan Control using Raspberry Pi Pico W for Smart Homes}
+		
+		The growing emphasis on energy efficiency and user comfort in smart homes has driven innovation in automated control systems. This literature review explores existing research on automatic fan control systems, particularly those utilizing microcontrollers like the Raspberry Pi Pico W.
+		
+		The use of microcontrollers like the Raspberry Pi for building smart home automation systems has gained significant traction. Studies by Pal et al. demonstrate the effectiveness of a Raspberry Pi for temperature-based fan control in a domestic setting, achieving substantial energy savings compared to traditional fan systems. This highlights the potential of microcontrollers for creating intelligent and efficient fan control solutions within smart homes.
+		
+		Barik explores integrating temperature and humidity sensors with a Raspberry Pi for various home automation applications, including fan control. This research demonstrates the feasibility of microcontrollers for multi-factor environmental control systems, potentially offering improved user comfort and energy savings in smart homes.
+		
+		Zhang et al. delve into automatic ceiling fan control using a combination of temperature and room occupancy sensors. Their focus aligns with the proposed system in this paper, aiming to achieve both user comfort and energy efficiency through occupancy detection. This approach of integrating occupancy and temperature sensors forms the foundation for the proposed automatic fan control system designed for smart homes using the Raspberry Pi Pico W.
+		\clearpage
+		
+%		\begin{quote}
+			\subsection{2.2 Implementation}
+			\subsubsection{2.2.1 Micropython}
+			\begin{figure}[h]
+				\centering
+				\hspace*{1.5cm}
+				\includegraphics[width=7in,height=6in]{media/python.png}\\
+				\caption{Python}
+			\end{figure}
+			MicroPython is a compact implementation of the Python 3 programming language tailored for microcontrollers and IoT devices, offering a lightweight yet powerful platform for development. Its small footprint and Python syntax streamline development, while built-in libraries facilitate hardware interaction with GPIO pins, sensors, and network protocols like Wi-Fi and Bluetooth. With support for real-time tasks and extensibility through custom C modules, MicroPython enables the creation of responsive and feature-rich IoT applications across a range of microcontroller platforms, making it an ideal choice for projects requiring efficient resource usage and rapid development cycles.
+			\clearpage
+			
+			
+			%	\begin{quote}
+				\subsubsection{2.2.2 Raspberry Pi Pico W}
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=5.767in,height=05.5833in]{media/ras.jpeg}\\
+					\caption{Raspberry Pi Pico W}
+				\end{figure}
+%			\setlength{\leftmargin}{cm}
+	%		\begin{minipage}[t]{0.83\textwidth}
+				The Pico W is based on the RP2040 microcontroller, which was designed by Raspberry Pi in-house. It combines a powerful ARM Cortex-M0+ processor with built-in Wi-Fi connectivity. The Pico W brings 802.11n wireless  networking to the Pico platform, opening up a range of possibilities for IoT projects, remote monitoring, and wireless communication13. The RP2040 microcontroller features a dual-core Arm Cortex M0+ processor, flexible clock running up to 133 MHz, 264kB of SRAM, and 2MB of on-board flash memory1. The Pico W has 26 multi-function GPIO pins, 2 SPI, 2 I2C, 2 UART, 3 12-bit ADC, and 16 controllable PWM channels. Programmable I/O: It also features 8 Programmable I/O (PIO) state machines for custom peripheral support. The Pico W retains complete pin compatibility with its older sibling, the Raspberry Pi Pico3. Fast cores, large memory, and flexible interfacing make RP2040 a natural building block for Internet of Things (IoT) applications.
+				he Raspberry Pi Pico W is a compact and powerful microcontroller board designed for a variety of projects. It's a member of the Raspberry Pi family, known for its user-friendly approach to electronics. Here's a breakdown of the Pico W's key features:
+				Core and Memory:
+				Microcontroller: Powered by the RP2040 chip, a dual-core ARM Cortex-M0+ processor with a flexible clock running up to 133 MHz.
+				Memory: Equipped with 2MB of on-board flash memory, providing enough storage for your code and data.
+				Connectivity:
+				Micro USB: Used for programming and powering the Pico W.
+				GPIO Pins: Offers 26 multi-function General Purpose Input/Output (GPIO) pins. These pins can be configured for various tasks like digital input/output, SPI, I2C, and more.
+				Wireless Connection: The "W" in Pico W stands for "wireless." It integrates a single-band 2.4 GHz IEEE 802.11n Wi-Fi module, enabling wireless communication with other devices or networks.
+				Applications:
+				The Raspberry Pi Pico W's versatility makes it suitable for a broad range of projects:
+				Learning Electronics: Its beginner-friendly design and ample online resources make it a great tool to learn coding and electronics fundamentals.
+				Internet of Things (IoT): With Wi-Fi connectivity, the Pico W can be integrated into IoT projects, allowing it to communicate and interact with cloud services and other devices.
+				Automation Projects: By controlling various sensors and actuators through its GPIO pins, the Pico W can automate tasks like controlling lights, monitoring temperature, or reading data from sensors.
+				Advantages:
+				Cost-Effective: Compared to other development boards, the Raspberry Pi Pico W offers a compelling price point.
+				User-Friendly: The Raspberry Pi tutorials, and a supportive community, making it easier to get started.
+				Flexible: The combination of processing power, GPIO pins, and Wi-Fi connectivity allows for a wide range of project possibilities.
+				MicroPython Support: The Pico W natively supports MicroPython, a simplified version of Python designed for microcontrollers. This Python-like syntax offers a familiar and approachable coding environment, even for those without extensive programming experience.
+				
+				Custom Bootloader: The Pico W boasts a flexible bootloader that can be reprogrammed, allowing users to install custom firmware or operating systems, further expanding its functionality.
+				High-Speed I/O: The Pico W's GPIO pins are capable of high-speed I/O operations, making it suitable for projects requiring real-time data acquisition or control.
+				
+				DMA (Direct Memory Access): The Pico W incorporates DMA capabilities, enabling efficient data transfer between memory and peripherals without overwhelming the processor. This can be beneficial for tasks involving large data streams.
+				
+				Official Raspberry Pi Pico Projects: The Raspberry Pi Foundation website offers a treasure trove of project tutorials specifically designed for the Pico, catering to various skill levels and interests. From basic LED blinking circuits to more complex projects like weather stations and data loggers, these resources provide a springboard for creative exploration.
+				
+				Community-Driven Innovation: The Raspberry Pi community is renowned for its collaborative spirit. Numerous online forums, project repositories, and social media groups foster knowledge sharing and inspiration. Here, users can find solutions to challenges, discover innovative project ideas, and connect with other enthusiasts.
+				
+				C/C++ Development: While MicroPython offers a user-friendly approach, the Pico W also supports programming in C and C++, unlocking the full potential of the hardware for those with experience in these lower-level languages.
+				
+				Wearable Electronics: The Pico W's compact size and low power consumption make it a potential candidate for developing wearable electronics projects. With careful design and component selection, it can be used to create fitness trackers, health monitors, or other innovative wearable devices.
+				
+				Machine Learning on the Edge: With the emergence of machine learning libraries optimized for microcontrollers, the Pico W holds promise for implementing basic on-device machine learning tasks. This could involve tasks like anomaly detection, gesture recognition, or simple image classification at the edge of the network, reducing reliance on centralized processing.
+				
+				Overclocking: While not officially supported, some users have experimented with overclocking the Pico W's processor to achieve slightly higher performance. However, this practice carries risks of instability and potential damage to the hardware, so it's recommended for experienced users who understand the potential consequences.
+			%\end{minipage}
+			
+				\end{quote}
+				\clearpage
+			
+			
+				\begin{quote}
+				\subsubsection{2.2.3 Relay Module:}
+				\begin{figure}[htbp]
+					\centering
+					\includegraphics[width=5.16667in,height=5.95833in]{media/relay.jpeg}
+					\caption{Relay Module}
+				\end{figure}
+				A relay module is an electronic device that consists of one or more relays, along with supporting components such as indicator LEDs, protection diodes, transistors, and resistors. The primary function of a relay module is to switch high voltage and current loads using low voltage signals. It serves to isolate the control circuit from the device or system being controlled. This allows the use of a microcontroller or other low-power device to control devices with much higher voltages and currents. Relay modules come in diverse shapes and sizes, with the most common configurations being rectangular boards containing 2, 4, or 8 relays. Some relay modules can house up to 16 relays. The relay module input voltage is usually DC. However, the electrical load that a relay will control can be either AC or DC, but essentially within the limit levels that the relay is designed for. A typical relay module includes pins for Normally Open (NO), Normally Closed (NC), Common Contact, and Signal Pin4. The NO and NC pins are used to connect the load, while the Signal Pin is used to control the relay. Relay modules find use in a lot of different applications, especially in systems requiring higher power than what a microcontroller can provide. They are commonly used in home automation systems, industrial machinery, and various types of electronic equipment.
+				A relay module is a circuit board that essentially acts as an electronically controlled switch. It uses a small amount of electrical current to control a much larger current or voltage. 
+				Components:
+				Coil: A small electromagnet that activates the relay when energized.
+				Contacts: A set of physical switches within the relay. These contacts come in different configurations (Normally Open (NO), Normally Closed (NC), and combinations) and control the flow of current in the circuit.
+				Control Circuit: This circuit receives a low-voltage signal (from your Raspberry Pi Pico W, for example) and uses it to activate the coil.
+				
+				Activation: When a low voltage signal is applied to the control circuit, it energizes the coil.
+				
+				Magnetic Field: The energized coil creates a magnetic field that attracts a metal armature within the relay.
+				
+				Contact Switching: This movement of the armature causes the contacts to switch positions.
+				In a Normally Open (NO) configuration, the contacts close, allowing current to flow through the circuit controlled by the relay. In a Normally Closed (NC) configuration, the contacts open, interrupting the current flow in the circuit. By connecting a relay module to your Raspberry Pi Pico W, you can control various devices and appliances based on your program:
+				Turning on/off Lights: Connect the relay to a mains power circuit and a light fixture. Your Pico W program can then switch the light on or off.
+				Controlling Motors: Relays can handle higher currents than the Pico W's GPIO pins, allowing you to control motors or other high-power devices.
+				Home Automation: Integrate the relay module with sensors and actuators to automate tasks like opening/closing curtains, turning on appliances based on temperature readings, etc.
+				
+				Choosing a Relay Module:
+				Voltage and Current Rating: Ensure the relay module can handle the voltage and current of the device you want to control.
+				
+				Contact Configuration: Select the appropriate contact configuration (NO, NC, or combination) based on your application.
+				Control Signal Voltage: Match the control signal voltage of the relay module to the output voltage of your Pico W (typically 3.3V).
+				Relay modules, while seemingly simple circuit boards, serve as essential building blocks in a wide range of electronic systems. They act as electronically controlled switches, empowering you to manage high-voltage or high-current circuits using low-voltage control signals. In essence, they function as miniature, intelligent gatekeepers, regulating the flow of power based on your commands.
+				
+				Electromagnet (Coil): This crucial component acts as the heart of the relay module. It transforms electrical current from your control signal into a magnetic field when activated.
+				Contacts: These physical switches reside within the relay and come in various configurations (Normally Open (NO), Normally Closed (NC), and combinations). They are responsible for controlling the current flow within the circuit you're managing.
+				Control Circuit: This dedicated section receives a low-voltage signal, often originating from your Raspberry Pi Pico W or a similar microcontroller. It utilizes this signal to energize the coil.
+				Functioning in Action:
+				
+				Activation Signal: When a low-voltage control signal is applied to the control circuit, it energizes the coil, initiating the switching process.
+				
+				Magnetic Force: The energized coil generates a magnetic field that exerts a force on a metal armature within the relay, attracting it.
+				Contact Switching: This movement of the armature causes the contacts to change positions, enabling or interrupting current flow based on the configuration:
+				Normally Open (NO): In this configuration, the contacts close when activated, permitting current to flow through the controlled circuit (e.g., turning on a light).
+				
+				Normally Closed (NC): Conversely, with this configuration, the contacts are closed by default, interrupting the current flow in the circuit (e.g., turning off a motor).
+	
+				Bridging the Gap: Relay modules act as a bridge between low-voltage control signals and high-power circuits. This enables you to manage devices like lights, motors, solenoids, and appliances using your microcontroller programs.
+				
+				Home Automation Powerhouse: Integrate relay modules with sensors and actuators to automate tasks within your smart home. Imagine lights automatically turning on with motion detection, irrigation systems controlled by moisture sensors, or even room temperature regulation based on sensor data.
+				
+				Industrial Automation Backbone: In industrial settings, relay modules play a critical role in controlling various machinery and processes. They can be used to activate pumps, valves, conveyor belts, and other industrial equipment based on control signals from programmable logic controllers (PLCs) or other control systems.
+				
+				Voltage and Current Rating: It's paramount to ensure the chosen relay module can handle the voltage and current requirements of the device you intend to control. Never exceed the specified ratings for safety reasons.
+				Contact Configuration: Select the appropriate contact configuration (NO, NC, or combination) based on your application's specific needs.
+				Control Signal Voltage: Ensure compatibility between the control signal voltage of the relay module and the output voltage of your microcontroller (commonly 3.3V or 5V).
+				
+				Isolation: For enhanced safety, consider using a relay module equipped with optocoupler isolation. This electrically isolates the low-voltage control circuit from the high-voltage power circuit, providing an additional layer of protection in professional environments.
+				
+				Assembly: While relay modules often come pre-assembled on a board, you'll need to connect them to your microcontroller using jumper wires based on the specific wiring diagram for your chosen module.
+				Safety First:  Working with mains power can be hazardous. Always prioritize a thorough understanding of electrical safety principles before working with high-voltage circuits. Consider using pre-built low-voltage project kits for learning purposes.
+				\end{quote}
+				\clearpage
+				
+				
+				\begin{quote}
+				\subsubsection{2.2.4  PIR Sensor:}
+				\begin{figure}
+					\centering
+					\includegraphics[width=5.16667in,height=5.95833in]{media/pir.jpeg}\\
+					\caption{PIR Sensor}
+				\end{figure}
+				A Passive Infrared Sensor (PIR Sensor) is an electronic sensor that measures infrared (IR) light radiating from objects in its field of view. PIR sensors are most often used in PIR-based motion detectors1. They are commonly used in security alarms and automatic lighting applications. PIR sensors detect the infrared radiation generated by objects or live animals inside its range of vision, which varies in temperature from warm to cold. This change is recognized when an item travels across this field, triggering the sensor’s alert. PIR sensors are fundamentally made of a pyroelectric sensor, which can detect levels of infrared radiation. They are flat control and minimal effort, have a wide lens range, and are simple to interface with. Most PIR sensors have a 3-pin connection at the side or bottom. One pin will be ground, another will be signal and the last pin will be power. Power is usually up to 5V.
+				Functioning Principle:
+				
+				Passive Detection: Unlike radar that emits its own signal, PIR sensors are passive. They detect the infrared (heat) radiation emitted from objects in their field of view.
+				Pyroelectric Sensor: The core component is a pyroelectric sensor, a crystal that generates a voltage when its temperature changes.
+				Dual Detection Zones: Most PIR sensors have two internal zones that continuously detect incoming IR radiation.
+				Movement Detection: When a warm object (like a person) moves across the field voltage output. This triggers the sensor to signal motion detection.
+				PIR Sensor Applications:
+				
+				Security Systems: PIR sensors are widely used in motion detectors for home and commercial security systems. They can trigger alarms, record video, or send notifications when motion is detected.
+				Automatic Lighting: PIR sensors can be used in automatic lighting systems, turning lights on when someone enters a room and off when it's vacant, saving energy.
+				Building Automation: In building automation systems, PIR sensors can be used to control various functions based on occupancy, like adjusting temperature or ventilation.
+				People Counting: PIR sensors can be used to anonymously track the number of people entering or leaving a particular area.
+				Factors to Consider When Using PIR Sensors:
+				
+				Detection Range: PIR sensors have a limited range, typically a few meters, depending on the model.
+				Field of View: The sensor's field of view determines the area it can cover. Choose a sensor with an appropriate field of view for your application.
+				Sensitivity: Adjust the sensitivity to avoid false alarms triggered by pets or minor temperature fluctuations.
+				Environmental Factors: PIR sensors can be affected by sudden temperature changes, drafts, or direct sunlight. Consider these factors when positioning the sensor.
+				PIR Sensor and Raspberry Pi Pico W:
+				
+				While the Raspberry Pi Pico W doesn't have built-in PIR sensor functionality, you can connect an external PIR sensor module to your Pico W to create various projects:
+				
+				DIY Security System: Combine a PIR sensor with a camera module or buzzer on your Pico W to create a basic security system that detects and alerts you of motion.
+				Presence Detection Projects: Use the PIR sensor to trigger actions on your Pico W program, like turning on lights when someone enters a room or sending notifications to your phone. Passive Infrared (PIR) sensors, those unassuming little modules, hold immense potential for creating smart and interactive projects. Unlike their bulkier counterparts that rely on radar or microwave technology, PIR sensors function in a more subtle way – by detecting changes in infrared (IR) radiation, or essentially heat. This makes them ideal for a variety of applications where sensing motion is crucial. At the heart of a PIR sensor lies a pyroelectric crystal. This special material has the remarkable property of generating a voltage when its temperature changes. Here's a breakdown of how PIR sensors translate this scientific principle into practical use:
+				
+				Continuous Monitoring: Most PIR sensors have two internal zones that constantly detect incoming infrared radiation. This radiation can originate from various sources in the environment, including people, sunlight, or even a warm appliance. Disruption Triggers Detection: When a warm object, like a person walking across a room, moves through the field of view, it disrupts the balance between the two zones. This change in the received IR radiation pattern causes a fluctuation in the voltage output from the pyroelectric crystal.
+				
+				Signal Processing and Alerting: This fluctuation in voltage is the signal the sensor interprets as motion. The sensor then transmits this signal to a connected device, which can be a security system, a microcontroller board like a Raspberry Pi Pico W, or a simple control circuit. While PIR sensors are widely recognized for their role in home and commercial security systems, their applications extend far beyond triggering alarms. Here are some captivating ways these versatile sensors are making a difference:
+				
+				Smart Lighting Control: Imagine walking into a room and having the lights automatically illuminate your path, then gently turning off when you leave. PIR sensors coupled with microcontrollers like the Raspberry Pi Pico W can create this seamless and energy-efficient lighting experience.
+				
+				Building Automation: In office buildings or public spaces, PIR sensors can be strategically placed to control air conditioning or ventilation systems. They can detect occupancy and adjust temperature or airflow accordingly, promoting comfort and reducing energy consumption.
+				
+				People Counting: Retail stores or public facilities can utilize PIR sensors to anonymously track the number of people entering or leaving a particular area. This data can be valuable for business analytics, crowd management, or optimizing staffing levels.
+				
+				Touchless Interactions: In a world increasingly focused on hygiene, PIR sensors can promote touchless interactions. They can be used to trigger automatic doors, soap dispensers, or hand sanitizer dispensers, fostering a cleaner and more convenient environment.
+				The combination of a PIR sensor and a Raspberry Pi Pico W opens a treasure trove of possibilities for creative projects.
+				DIY Security System with Alerts: Build a basic home security system that uses a PIR sensor to detect motion and trigger a camera or buzzer to notify you of potential intruders.
+				
+				Smart Lighting with Presence Detection: Develop a system that utilizes a PIR sensor to control your lights. The lights can automatically turn on when someone enters a room and turn off when they leave, creating a convenient and energy-saving solution.
+				\end{quote}
+				\clearpage
+				
+				
+				\begin{quote}
+					\subsubsection{2.2.5  Temperature Sensor:}
+					\begin{figure}
+						\centering
+						\includegraphics[width=5.16667in,height=5.95833in]{media/only temp.jpg}\\
+						\caption{Temperature Sensor}
+					\end{figure}
+					A temperature sensor is a device, typically, a thermocouple or resistance temperature detector, that provides temperature measurement in a readable form through an electrical signal.
+					
+					A thermometer is the most basic form of a temperature meter that is used to measure the degree of hotness and coolness.
+					
+					Temperature meters are used in the geotechnical field to monitor concrete, structures, soil, water, bridges, etc. for structural changes in due to seasonal variations.
+					
+					A thermocouple (T/C) is made from two dissimilar metals that generate an electrical voltage in direct proportion to the change in temperature. An RTD (Resistance Temperature Detector) is a variable resistor that changes its electrical resistance in direct proportion to the change in the temperature in a precise, repeatable, and nearly linear manner.
+					
+					
+					What do temperature sensors do?
+					
+					A temperature sensor is a device that is designed to measure the degree of hotness or coolness in an object. The working of a temperature meter depends upon the voltage across the diode. The temperature change is directly proportional to the diode’s resistance. The cooler the temperature, the lesser will be the resistance, and vice-versa.
+					
+					The resistance across the diode is measured and converted into readable units of temperature (Fahrenheit, Celsius, Centigrade, etc.) and, displayed in numeric form over readout units. In the geotechnical monitoring field, these temperature sensors are used to measure the internal temperature of structures like bridges, dams, buildings, power plants, etc.
+					
+					
+					What are the functions of a temperature sensor?
+					
+					Well, there are many types of temperature sensors, but, the most common way to categorize them is based on the mode of connection which includes, contact and non-contact temperature sensors.
+					
+					Contact sensors include thermocouples and thermistors because they are in direct contact with the object they are to measure. Whereas, the non-contact temperature sensors measure the thermal radiation released by the heat source. Such temperature meters are often used in hazardous environments like nuclear power plants or thermal power plants.
+					
+					In geotechnical monitoring, temperature sensors measure the heat of hydration in mass concrete structures. They can also be used to monitor the migration of groundwater or seepage. One of the most common areas where they are used is while curing the concrete because it has to be relatively warm in order to set and cure properly. The seasonal variations cause structural expansion or contraction thereby, changing its overall volume.
+					Guardians of Heat and Cold: Unveiling the World of Temperature Sensors
+					
+					Temperature sensors are ubiquitous in our daily lives, silently monitoring and measuring the thermal state of our environment. From regulating the temperature in your home to ensuring the smooth operation of complex machinery, these versatile devices play a critical role across various applications.
+					
+					Functioning Fundamentals:
+					
+					Temperature sensors operate on the principle that various physical properties of materials change in response to temperature fluctuations. Here's a breakdown of two common types:
+					
+					Thermistors: These sensors utilize the inherent property of certain materials (usually semiconductors) to exhibit a change in resistance as temperature varies. There are two main types of thermistors:
+					Negative Temperature Coefficient (NTC) Thermistors: The resistance of NTC thermistors decreases as temperature increases. This makes them highly sensitive and suitable for measuring a wide range of temperatures.
+					Positive Temperature Coefficient (PTC) Thermistors: Conversely, the resistance of PTC thermistors increases with rising temperatures. They are often used for applications requiring over-temperature protection, as their resistance surge can trigger safety mechanisms.
+					Resistance Temperature Detectors (RTDs): These sensors, typically made of platinum or nickel wire, exhibit a linear change in resistance with temperature variations. RTDs are known for their high accuracy and stability, making them ideal for industrial and scientific applications where precise temperature measurement is crucial.
+					Thermocouples: These sensors consist of two dissimilar metals joined at one end. When a temperature difference exists between the junction and the other end of the metals, a voltage is generated. Thermocouples offer a wide operating range and are suitable for high-temperature applications.
+					Infrared (IR) Thermometers: These non-contact sensors measure the infrared radiation emitted by an object, which correlates with its temperature. This allows for remote temperature measurement without physically touching the object.
+					
+					HVAC Systems: In homes and buildings, temperature sensors regulate heating, ventilation, and air conditioning systems, ensuring comfortable environments and optimal energy efficiency.
+					Appliance Control: Ovens, refrigerators, and other appliances rely on temperature sensors to maintain precise operating temperatures for cooking, food storage, and other functions.
+					Industrial Automation: In factories and production lines, temperature sensors monitor critical processes in machinery, ensuring product quality and preventing equipment malfunctions.
+					Medical Devices: Thermometers and other medical devices use temperature sensors for vital sign monitoring, fever detection, and other applications.
+					Weather Stations: Temperature sensors are essential components of weather stations, providing data for weather forecasting and climate monitoring.
+					
+					Temperature Range: Ensure the sensor's operating range encompasses the temperatures you intend to measure.
+					Accuracy: The required level of precision will determine the sensor type. For instance, RTDs offer higher accuracy than thermistors.
+					Response Time: Consider how quickly the sensor needs to respond to temperature changes. This is crucial for applications requiring real-time monitoring.
+					
+					Cost: Thermistors are generally less expensive than RTDs or thermocouples.
+					Interface Compatibility: Select a sensor compatible with your data acquisition system (e.g., Raspberry Pi Pico W). Some sensors require additional signal conditioning circuits.
+					Interfacing Temperature Sensors with Raspberry Pi Pico W:
+					
+					The Raspberry Pi Pico W, with its analog-to-digital converter (ADC), can be interfaced with various temperature sensors.
+					
+					Connecting the Sensor: Connect the temperature sensor's output pin to an analog input pin on the Pico W using jumper wires according to the specific sensor's datasheet.
+					
+					Reading Sensor Data: Write Python code to read the voltage values from the analog input pin.
+					
+					Calibration and Conversion: Since the voltage reading might not directly correspond to temperature, you'll need to implement calibration factors or conversion formulas specific to your chosen sensor to obtain accurate temperature readings.
+				\end{quote}
+				\clearpage
+				
+				\begin{quote}
+				\subsubsection{2.2.6  Jumper Wire:}
+				\begin{figure}
+					\centering
+				\includegraphics[width=6.16667in,height=6.95833in]{media/wire.jpg}\\
+					\caption{Jumper Wire}
+				\end{figure}
+				A Jumper Wire, also known as a jump wire or DuPont wire, is an electrical wire with a connector or pin at each end Jumper wires are used to interconnect the components of a breadboard or other prototype or test circuit, internally or with other equipment or components, without soldering. They are typically used in DIY electrical projects. Jumper wires are simply wires that have connector pins at each end32. They come in a wide array of colors. However, the colors don’t actually mean anything and are just an aid to help you keep track of what is connected to which. Jumper wires typically come in three versions: male-to-male, male-to-female, and female-to-female. The difference between each is in the endpoint of the wire. Male ends have a pin protruding and can plug into things, while female ends do not and are used to plug things into. Jumper wires are commonly used with breadboards and other prototyping tools like Arduino. They make changing circuits as simple as possible.
+				
+				Breadboard Friendly: Their pre-made design with connector pins makes them ideal for quick and easy connections on breadboards.
+				
+				Reusable: Jumper wires can be easily disconnected and reused in different projects, reducing waste and saving money.
+				
+				Flexibility: The variety of wire lengths and connector configurations allows for customization in your circuit design.
+				
+				No Soldering Required: Jumper wires eliminate the need for soldering, making them perfect for beginners or projects requiring frequent modifications.
+				
+				Wire Gauge: Jumper wires typically come in gauges like 22 AWG or 24 AWG. These gauges are suitable for low-current applications in breadboard circuits. For higher current applications, thicker gauge wires might be necessary.
+				
+				Wire Length: Choose jumper wires with appropriate lengths to avoid unnecessary clutter or stretched connections on your breadboard.
+				
+				Organization: Using jumper wires in different colors can improve the readability and maintainability of your circuit, especially in complex projects.
+				
+				Durability: Soldered connections create a more permanent and mechanically secure bond between components.
+				Lower Resistance: Solder joints offer lower electrical resistance compared to the contact points of jumper wire pins, which can be crucial for high-precision circuits.
+				Compactness: Soldering allows for a more compact and professional-looking final product.
+				
+				\end{quote}
+				\clearpage
+				
+				
+				\begin{quote}
+				\subsubsection{2.2.7  Breadboard:}
+					\begin{figure}[htbp]
+						\centering
+						\includegraphics[width=5.16667in,height=5.95833in]{media/board.jpg}
+						\caption{Breadboard}
+					\end{figure}
+					
+				A breadboard, also known as a solderless breadboard or protoboard, is a construction base used for building semi-permanent prototypes of electronic circuits. Breadboards are typically rectangular boards containing holes into which circuit components like ICs, resistors, capacitors, and transistors can be inserted. They also have adhesive backing and many tie points (holes) into which circuit components can be inserted. The primary function of a breadboard is to construct and test circuits without soldering. The components are inserted into the breadboard’s holes and can be easily repositioned or removed, making breadboards ideal for prototyping and experimenting with circuit designs Breadboards are popular in electronics education to build and test circuits quickly. They are also used by hobbyists and professionals alike. While breadboards are convenient for prototyping, they do have limitations. They are not suitable for use with high-frequency circuits (above 10 MHz) due to the parasitic capacitance and inductance of the breadboard. Also, the connections on a breadboard are less reliable and more prone to failure compared to soldered connections. The term “breadboard” comes from the early days of electronics, when people would literally.
+				A breadboard, also known as a solderless breadboard or protoboard, is a reusable construction platform commonly used for prototyping electronic circuits. It allows you to easily experiment with different circuit designs without permanently soldering components together. Here's a breakdown of its key features and how it works:
+				
+				Construction:
+				
+				Plastic Base: A rectangular plastic board with a grid of tiny holes.
+				Metal Contacts: Rows and columns of metal contacts are underneath the holes, electrically connecting components inserted into them.
+				Bus Strips: Typically, breadboards have long metal strips running along the sides that can be used for common connections like power (ground and voltage) rails.
+				Functionality:
+				
+				Component Insertion: Electronic components like resistors, capacitors, LEDs, and integrated circuits (ICs) have wires or legs that fit snugly into the breadboard holes.
+				Internal Connections: The metal contacts beneath the holes are arranged in rows and columns, allowing components inserted in the same row or certain connected columns to be electrically connected.
+				Jumper Wires: Short, insulated wires are often used to connect components across non-connected rows or breadboard sections.
+				Benefits of Using a Breadboard:
+				
+				Reusable: Components can be easily removed and reused in other projects, reducing waste and saving money.
+				Flexible: Allows for quick changes and experimentation with circuit designs without permanent connections.
+				Breadboard-Friendly Components: Many electronic components are designed with breadboard-compatible leads for easy insertion.
+				Beginner-Friendly: A great tool for learning electronics as it simplifies circuit building and troubleshooting.
+				\end{quote}
+				\clearpage
+				
+				
+				\begin{quote}
+					\subsubsection{2.2.8 Cooling Fan:}
+					\begin{figure}[h]
+						\centering
+					\includegraphics[width=6.16667in,height=6.95833in]{media/fan.jpg}\\
+						\caption{Cooling Fan}
+					\end{figure}
+					
+				A cooling fan, also known as a radiator fan, is a device designed to cool or ventilate an environment by blowing air. Typically, the fan is positioned between the radiator and the engine as it draws heat to the atmosphere. In front-wheel cars, the cooling fan used is an electrical component powered by the battery. Cooling fans are widely used in various devices such as computers, gaming consoles, and home appliances. They help to maintain an optimal temperature and prevent overheating, which could lead to performance issues or damage. There are various types of cooling fans available in the market, including tower fans, pedestal fans, floor fans, and mini portable fans. Some popular brands of cooling fans include Honeywell, Dyson, Rowenta, and Vornado.
+				\end{quote}
+				
+			%\end{quote}
+			
+%		\end{quote}
+%	\end{quote}
+	\clearpage
+	
+	
+	%system diagram
+	\begin{quote}
+		\section{3. Diagram}
+		
+	% \begin{quote}
+			\subsection{3.1 Raspberry Pi Pico W Pinout}
+			Raspberry Pi Pico W adds on-board single-band 2.4GHz wireless interfaces (802.11n) using the Infineon CYW43439 while retaining the Pico form factor.\\
+			The on-board 2.4GHz wireless interface has the following features:\\
+			Wireless (802.11n), single-band (2.4 GHz)\\
+			WPA3\\
+			Soft access point supporting up to four clients\\
+			Bluetooth 5.2
+			
+			\begin{figure}
+				\centering
+				\includegraphics[width=15cm,height=10cm]{media/PicoW Pinout.jpg}\\
+				\caption{Raspberry Pi Pico W Pinout Diagram}
+			\end{figure}
+			
+	%	\end{quote}
+		\clearpage
+		
+		
+	%	\begin{quote}
+		\subsection{3.2 Relay Module Connections}
+		Connect the VCC pin of the relay module to a 5V power supply (not directly to the Pico W).
+		
+		Connect the GND pin of the relay module to the GND pin of the Raspberry Pi Pico W.
+		
+		Connect the IN pin of the relay module to a designated GPIO pin on the Raspberry Pi Pico W (e.g., GP26).
+		\begin{figure}
+			\centering
+			\includegraphics[width=15cm,height=10cm]{media/ras with relay.jpg}\\
+			\caption{Relay Module Connections}
+		\end{figure}
+			
+	%	\end{quote}
+		\clearpage
+		
+		
+%		\begin{quote}
+		\subsection{3.3 PIR Sensor Connections}
+		Connect the VCC pin of the PIR sensor to a voltage pin on the Raspberry Pi Pico W that matches the sensor's requirement (e.g., 3V3 for a 3.3V sensor).
+		
+		Connect the GND pin of the PIR sensor to the GND pin of the Raspberry Pi Pico W.
+		
+		Connect the OUT (or DO) pin of the PIR sensor to a designated GPIO pin on the Raspberry Pi Pico W (e.g., GP28).
+			
+			\begin{figure}
+				\centering
+				\includegraphics[width=15cm,height=10cm]{media/ras with pir.jpg}\\
+				\caption{PIR Sensor Connections}
+			\end{figure}
+			
+%		\end{quote}
+		\clearpage
+		
+		
+		
+		\subsection{3.4 Temperature Connections}
+		The Raspberry Pi Pico (RP2040) chip itself has a built-in temperature sensor. While not the most precise, it can be a good starting point for simple projects. Here's how to connect:
+		No additional hardware is needed.
+		You'll use software to access the sensor readings.
+		Using an External Temperature Sensor:
+		For more accurate temperature measurements, you can connect an external temperature sensor to the Raspberry Pi Pico W. Here are some popular options and their connection details:\\
+		
+		DHT11 Temperature and Humidity Sensor:
+		Connection:\\
+		VCC (DHT11) -> Pin 36 (3V) of Pico\\
+		GND (DHT11) -> Pin 38 (GND) of Pico\\
+		DATA (DHT11) -> Pin 4 (GPIO28) of Pico\\
+		
+		DS18B20 Temperature Sensor:
+		Connection:
+		Requires a pull-up resistor connected between the data pin of the sensor and the 3.3V pin of the Pico.
+		Data pin of DS18B20 -> Pin (any GPIO pin) of Pico (with pull-up resistor)
+		GND (DS18B20) -> Pin 38 (GND) of Pico
+		VCC (DS18B20) -> Pin 36 (3V) of Pico
+		
+		\begin{figure}
+			\centering
+			\includegraphics[width=15cm,height=10cm]{media/temp.jpg}\\
+			\caption{Temperature Connections}
+		\end{figure}
+		
+		%		\end{quote}
+		\clearpage
+		
+		
+		
+	%	\begin{quote}
+		\subsection{3.5 Connection Diagram}
+		Raspberry Pi Pico W: The central processing unit that reads sensor data and controls the fan.
+		
+		PIR Sensor: Detects motion within a designated range.
+		
+		Temperature Sensor: Monitors the ambient temperature.
+		
+		Fan: The device you want to control (may require a driver circuit depending on voltage and power requirements).
+		
+		Jumper Wires: Used for connecting components on the breadboard.
+		
+		Breadboard (Optional): Provides a prototyping platform for easy circuit assembly.
+		\begin{figure}
+			\centering
+				\hspace*{-1.5cm}
+			\includegraphics[width=20cm,height=15cm]{media/circuit.jpeg}\\
+			\caption{Connection Diagram}
+		\end{figure}
+		
+	%	\end{quote}
+		\clearpage
+	
+	%specification
+%	\begin{quote}
+		\subsection{3.6 Specification}
+		\textbf{Hardware Components: }\\
+		Raspeberry Pi Pico W, Relay Module, PIR Sensor, Cooling Fan, Jumper
+		Wire, BreadBoard\\
+		\vspace{0.3cm}
+		\textbf{Tools Used : }\\
+		\begin{quote}
+			\textbf{1. Programming language :}\\Micro Python \\
+			\vspace{0.2cm}
+			\textbf{2. Integrated Development Environment: }\\Thonny\\
+			\vspace{0.2cm}
+			\textbf{3. Documentation :}\\Latex\\
+		\end{quote}
+	% \end{quote}
+	\clearpage
+ \end{quote}
+	
+	%implementation
+	\begin{quote}
+		\section{4. Experimentation, Result}
+		
+		\begin{figure}
+			\centering
+							\hspace*{-1.4cm}
+			\includegraphics[width=35cm,height=15cm]{media/result.jpeg}\\
+		%	\justify
+		\end{figure}
+		\clearpage
+		
+		
+		\begin{figure}
+			\centering
+							\hspace*{-1.5cm}
+			\includegraphics[width=50cm,height=25cm]{media/new relay.jpeg}\\
+		\end{figure}
+				\clearpage
+				
+		\begin{figure}
+			\centering
+							\hspace*{-1.5cm}
+			\includegraphics[width=55cm,height=25cm]{media/new pir.jpeg}\\
+		\end{figure}
+							\clearpage
+					
+		\begin{figure}
+			\centering
+							\hspace*{-1.5cm}
+			\includegraphics[width=61cm,height=26cm]{media/new temp.jpeg}\\
+		\end{figure}
+							\clearpage
+					
+		\begin{figure}
+			\centering
+							\hspace*{-1.5cm}
+			\includegraphics[width=40cm,height=15cm]{media/new fan.jpeg}\\
+		\end{figure}
+						\clearpage
+				
+		\begin{figure}
+			\centering
+							\hspace*{-1.5cm}
+			\includegraphics[width=45cm,height=15cm]{media/new rotate fan.jpeg}\\
+		\end{figure}
+		
+		\begin{figure}
+			\centering
+			\hspace*{-0.3cm}
+			\includegraphics[width=55cm,height=25cm]{media/new all.jpeg}\\
+			\end{figure}
+			
+		\begin{figure}
+			\centering
+			\hspace*{-1.5cm}
+			\includegraphics[width=55cm,height=25cm]{media/new 3 in one.jpeg}\\
+			\end{figure}
+				
+	\end{quote}
+	
+	\clearpage
+
+	\begin{quote}
+		\section{5. Conclusion And Future Scope}
+		\subsection{5.1 Conclusion}
+	%	\begin{quote}
+			Conclusion: The project “Automatic Fan Control Based on Motion Detection and Temperature Using Raspberry Pi Pico W” successfully integrates the concepts of Internet of Things (IoT), temperature monitoring, and motion detection to create an efficient and user-friendly system12. The system precisely measures temperature and reliably controls the fan based on the temperature and motion detected12. This not only improves user convenience and environmental comfort but also enhances energy efficiency. This project explored the development of an automatic fan control system utilizing the Raspberry Pi Pico W for smart home applications. The literature review highlighted the effectiveness of microcontrollers like the Raspberry Pi for creating intelligent fan control solutions.
+			
+			The proposed system leverages a combination of motion detection using a PIR sensor and temperature monitoring to achieve a user-friendly and energy-efficient solution. The provided MicroPython code offers a starting point for controlling a fan based on these inputs. The connection information for the Raspberry Pi Pico W with both the relay module and PIR sensor was presented to facilitate the hardware setup.
+			
+			The provided MicroPython code serves as a foundation for controlling a fan based on these inputs. The connection details for the Raspberry Pi Pico W with both the relay module, which controls the fan power, and the PIR sensor were presented to guide the hardware setup process.
+			
+			Looking ahead, several advancements could enhance this project. Expanding the sensor suite to include air quality sensors could enable the system to not only adjust fan operation based on temperature and occupancy but also consider air quality for a more comprehensive approach to smart home environment control. Additionally, researching sensor selection and optimization for improved accuracy and reliability in various environmental conditions would ensure the system performs effectively in real-world scenarios. Finally, for Wi-Fi connected versions of the Pico W, addressing security considerations in smart home networks is crucial to mitigate potential vulnerabilities associated with unauthorized access or data breaches.
+			
+		
+	%	\end{quote}
+		\clearpage
+		
+		
+		\subsection{5.2 Future Scope}
+	%	\begin{quote}
+			Future Scope: The project opens up several avenues for future work. Some potential improvements and extensions could include:
+			
+			1. Security Enhancements: As with any IoT device, security is a crucial aspect. Future work could focus on enhancing the security of the system to protect against potential threats.
+			
+			2. Interaction with Other IoT Devices: The system could be designed to interact with other IoT devices in a smart home environment, providing a more integrated and seamless user experience.
+			
+			3. Geographical Sensing: The system could be enhanced with geographical sensing capabilities to adjust the fan speed based on the geographical location and local weather conditions.
+			
+			4. Adaptive Fan Speed Management: The system could incorporate machine learning algorithms to learn from the user’s preferences and adapt the fan speed accordingly.
+			
+			5. Reliability Improvements: Future work could also focus on improving the reliability of the system, ensuring consistent performance under various conditions.
+			
+			6. Integration with Renewable Energy Sources: The system could be integrated with renewable energy sources like solar power, making it more sustainable and environmentally friendly.
+			
+			7. These enhancements would not only improve the functionality and user experience of the system but also contribute to the broader field of IoT and home automation.
+			
+			8. Air Quality Sensor:  Integrating an air quality sensor, such as those measuring CO2 levels or volatile organic compounds (VOCs), can provide valuable insights into indoor air quality. The system can then adjust fan operation to improve air circulation and promote a healthier indoor environment, especially in homes with limited ventilation or potential air quality concerns.
+			
+			9. Humidity Sensor: Humidity levels significantly impact thermal comfort. Including a humidity sensor allows the system to consider both temperature and humidity for optimal fan control. During hot and humid periods, the fan can operate at a higher speed to enhance the evaporative cooling effect, creating a more comfortable experience.
+			
+			10. Light Sensor:  Integrating a light sensor enables the system to adapt fan operation based on natural light availability. During daytime hours with ample sunlight, the fan speed could be adjusted lower to reduce energy consumption. Additionally, the  system could potentially integrate with smart lighting systems, creating a more automated and user-friendly experience.
+			
+			11. Noise Sensor: Noise sensors can detect ambient noise levels within the home. The system can then adjust fan speed to maintain a comfortable noise level. For instance, during quieter nighttime hours, the fan could operate at a lower speed to minimize noise disturbance while maintaining proper air circulation.
+			
+			12. Adaptive Learning: Implementing a machine learning algorithm can allow the system to learn user preferences and adjust fan operation accordingly. By analyzing historical data on user interactions, temperature variations, and occupancy patterns, the system can personalize settings and optimize fan control for individual comfort levels and energy efficiency.
+			
+			13. Predictive Control: Machine learning models can be trained on historical data to predict future temperature and occupancy trends. This allows the system to proactively adjust fan settings in anticipation of changes. For example, if the system predicts a rise in temperature during the afternoon hours, it can pre-cool the space by adjusting the fan speed beforehand, ensuring a comfortable environment without unnecessary energy usage upon temperature rise.
+			
+			14. Anomaly Detection: Machine learning algorithms can be used for anomaly detection. The system can analyze sensor data to identify unusual patterns, such as sudden temperature spikes or abnormal humidity levels, potentially indicating equipment malfunction or ventilation issues within the home. By detecting anomalies, the system can alert homeowners and prompt necessary actions.
+			
+			15. Automated Scenario Activation:  The system can trigger automated scenarios based on sensor data. For instance, upon detecting high CO2 levels and low occupancy, the system can activate both the fan (for improved air circulation) and a smart window opener (for introducing fresh air) to address the situation.
+			
+			16. Voice Control Integration: Integrating with voice assistants like Amazon Alexa or Google Assistant allows users to control the fan system directly through voice commands. This enhances user convenience and accessibility, promoting a more hands-free smart home experience.
+			
+			17. Remote Access and Monitoring:  By connecting the system to a cloud platform, users can remotely monitor sensor data (temperature, humidity, air quality) and control fan operation from anywhere with an internet connection. This can be particularly beneficial for checking home conditions while away or adjusting settings when needed remotely.
+			
+			18. Secure Communication Protocols: Implementing secure communication protocols, such as encrypted data transmission, is essential to safeguard against unauthorized access and data breaches. This protects user privacy and prevents malicious manipulation of system settings.
+			
+			19. Device Authentication:  Ensuring proper authentication mechanisms for devices within the smart home network is necessary to prevent unauthorized devices from joining and potentially compromising the system's functionality or security.
+			
+			20. Regular Updates and Maintenance: Maintaining the system with regular software updates and firmware upgrades helps address.
+	%	\end{quote}
+		
+	\end{quote}
+	\clearpage
+	
+	\begin{quote}
+		\section{References}
+		\justifying
+	%	\begin{quote}
+		%	\justifying
+		
+		\begin{justifying}
+			
+			1. GitHub: https://github.com/JeremySCook/RaspberryPi-Fan-Control\\
+			2. GitHub: https://github.com/ar51an/raspberrypi-fan-control\\
+			3. Ijarcce: https://ijarcce.com/papers/design-of-an-automatic-room-temperature-controlled-fan-using-raspberry-pi-and-lm75-sensor\\
+			4. Arrow: https://www.arrow.com/en/research-and-events/articles/\\automating-your-raspberry-pi-fan\\
+			5. Embeddedcomputing https://embeddedcomputing.com/technology\\/processing/compute-modules/raspberry-pi-os-fan-control\\
+			6. learn.adafruit https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/overview\\
+			7. randomnerdtutorials: https://randomnerdtutorials.com/getting-started-with-raspberry-pi/\\
+			8. hackaday: https://hackaday.com/category/raspberry-pi-2/\\
+			9. embeddedcomputing: https://embeddedcomputing.com/technology/\\processing/compute-modules/raspberry-pi-os-fan-control\\
+			10. makeuseof: https://www.makeuseof.com/tag/raspberry-pi/\\
+			11. magpi: https://magpi.raspberrypi.com/\\
+			12. ieeexplore: https://ieeexplore.ieee.org/document/8086785`\\
+			13. github: https://github.com/raspberrypi/firmware\\
+			14. forums: https://forums.raspberrypi.com/\\
+			15. Raspberry Pi Official Forum: https://forums.raspberrypi.com/\\
+			16. youtube: https://www.youtube.com/watch?v=e1Xmf-iMUkw\\
+			17. instructables: https://www.instructables.com/Temperature-Controlled-Raspberry-Pi-Fan-Keep-Your-/\\
+			18. learn.adafruit: https://learn.adafruit.com/category/raspberry-pi\\
+			19. Instructables: https://hackaday.com/tag/raspberry-pi/\\
+			20. Forums.raspberrypi.com: https://github.com/ar51an/raspberrypi-fan-control\\
+			21. The MagPi: https://magpi.raspberrypi.com/articles/magnetic-bounce-interface\\
+			22. eLinux.org: https://elinux.org/RPiHub\\
+			23. Raspberry Pi Documentation: https://embeddedcomputing.com/\\technology/processing/compute-modules/raspberry-pi-os-fan-control\\
+			24. Adafruit Learning System: https://learn.adafruit.com/adafruit-io-basics-temperature-and-humidity?view=all\\
+			25. Hackaday Project: https://www.youtube.com/watch?v=XNy\\
+			26. Tom's Hardware: https://www.jeffgeerling.com/blog/2019/best-way-keep-your-cool-running-raspberry-pi-4\\
+			27. Electronicshub: https://medium.com/@paulo.de.jesus/regulate-temperature-with-a-raspberry-pi-pico-part-1-hardware-8b2ea2387484\\
+			28. Make Use Of: https://m.youtube.com/watch?v=fK29ykUA0\\
+			29. eLinux.org: https://elinux.org/RPiHub\\
+			30. The MagPi: https://www.youtube.com/watch?v=WhmjlL3Pkhs\\
+			31. IEEE Xplore: https://ieeexplore.ieee.org/document/9074378\\
+			32. Springer Link: https://link.springer.com/book/10.1007/978-981-16-8570-5\\
+			33. Raspberry Pi Stack Exchange: https://embeddedcomputing.com/\\technology/processing/compute-modules/raspberry-pi-os-fan-control\\
+			34. Reddit: r/raspberrypi: https://www.reddit.com/r/raspberrypi/\\
+			35. zRaspberry Pi Stack Exchange: https://forums.raspberrypi.com/\\viewtopic.php?t=264208\\
+			36. Tom's Hardware: https://beebom.com/how-overclock-raspberry-pi-4/\\
+			37. IEEE Xplore: https://ieeexplore.ieee.org/document/5385939\\
+			38. eLinux.org: https://copperhilltech.com/content/\\
+			39. Adafruit Industries: https://learn.adafruit.com/category/raspberry-pi\\
+			40. Linux Journal: https://www.linuxjournal.com/article/7889
+			
+		\end{justifying}
+		
+
+			\justifying
+			
+		\end{quote}
+%	\end{quote}
+	
+\end{document}
